@@ -1,0 +1,24 @@
+Up till now, we’ve been focusing on UNIX programming APIs, and how to interact with various aspects of the system. 
+Part of this discussion has been how various programs can be orchestrated to cooperate. 
+Pipelines enable larger functionalities to be composed out of multiple programs in which the output of one goes to the input of the next. 
+System servers provide services to clients that use IPC to harness their functionality. 
+This enables servers that control system resources (like wifi) to let many clients have limited and controlled access to those resources.
+
+The next few chapters dive under the hood of processes. We’ll investigate
+
+how programs are represented and how to understand their format,
+how programs are organized and can share code, and
+how they interact with the system.
+How do we think about our system’s programs? We’re used to writing our own programs, and like to think of the code we write being relatively self-contained. 
+In contrast, quite a bit of system programming is about providing functionality that can be used by any program on the system. 
+What if you wanted to implement the world’s best key-value store, and wanted to enable anyone to use your implementation!?
+
+We think of these shared functionalities as falling into one of two categories:
+
+Libraries that represent bodies of code that can be pull into our applications. 
+You’re already quite used to these! libc is the core library that provides all of the functions that we use when we include many of the 
+headers in the class, for example, #include <stdlib.h>, #include <stdio.h>, or #include <string.h>.
+Services which track different aspects of the system, and provide information to our programs. 
+They tend to be programs that are always running on your system, and your programs can communicate with them to harness their functionality. 
+These include services that receive print requests, that service ssh sessions, that provide your vpn connection, and that display your graphical user interface, 
+and many other functions. We’ve already seen many of the IPC and communication foundations that make these tick.

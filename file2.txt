@@ -1,0 +1,20 @@
+It is an unfortunate truth of security that all programs have faults because humans have faults — human’s write programs. 
+As such, we will take some time to understand the kinds of mistakes you, me, and all programmers may make that can lead to security violations.
+
+This is a broad topic area, and we only have a small amount of time to talk about it. We will focus on three classes of 
+attack that are very common for the kinds of programs we’ve been writing in this course.
+
+Path Lookup Attacks: Where the attacker leverages path lookup to compromise an executable or library
+Injection Attacks: Where an attacker can inject code, usually in the form of bash, into a program that will get run.
+Overflow Attacks: Where the attack overflows a buffer to alter program state.
+In isolation, each of these attacks can just make a program misbehave; however, things get interesting when an attack 
+can lead to privilege escalation. Privilege escalation enables a user to maliciously access resources (e.g. files) 
+normally unavailable to the user, by exploiting a program with heightened privilege (e.g. due to setuid bits, or explicit 
+id upgrades) to perform arbitrary tasks. The ultimate goal of an attacker is to achieve privilege escalation to root, 
+which essentially gives them access to all system resources.
+
+You might think that the kernel has more privilege than the root user. However, the root user is given access to the 
+/dev/mem pseudo-device that is “all of memory” including all of the kernel’s memory, and root has the ability to insert dynamic 
+libraries (called “kernel modules”) into the kernel to dynamically update kernel code! Being root truly is a super-power!
+
+Each of these topics are quite nuanced, and the hope is to give you a general overview so you can explore the topic more on your own.
